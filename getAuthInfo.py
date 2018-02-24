@@ -2,7 +2,7 @@
 # This script retrieves UPnP configuration info and will parse the file for the PTP authentication data
 
 # Import Dependencies
-import requests
+#import requests
 import xml.etree.ElementTree as ET
 
 server = "192.168.1.100"
@@ -18,15 +18,14 @@ else:
 # Parse returned xml data
 root = ET.fromstring(r.text)
 
-#for child in root:
-#    print(child.tag, child.attrib)
-
-#print(root[2][7].text)
-
-for elem in root:
-    for subelem in elem:
-        print(subelem.tag, subelem.text)
+# reference for XML parsing: https://eli.thegreenplace.net/2012/03/15/processing-xml-in-python-with-elementtree
+#tree = ET.parse('CameraDevDesc.xml')
+#root = tree.getroot()
 
 
+uuid = root.find('{urn:schemas-upnp-org:device-1-0}device/{urn:schemas-upnp-org:device-1-0}UDN').text
 
-#print(guid)
+friendlyName = root.find('{urn:schemas-upnp-org:device-1-0}device/{urn:schemas-upnp-org:device-1-0}friendlyName').text
+
+print(uuid)
+print(friendlyName)
