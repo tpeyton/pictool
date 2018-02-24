@@ -2,7 +2,7 @@
 # This script retrieves UPnP configuration info and will parse the file for the PTP authentication data
 
 # Import Dependencies
-#import requests
+import requests
 import xml.etree.ElementTree as ET
 
 server = "192.168.1.100"
