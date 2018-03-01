@@ -5,11 +5,13 @@
 import requests
 import xml.etree.ElementTree as ET
 
+# initialize variables
 server = "192.168.1.100"
 
 # get xml file from server (note for actual use, port is 49152)
 r = requests.get('http://' + server + '/CameraDevDesc.xml')
 
+# attempt to get file
 if r.status_code != requests.codes.ok:
     exit("Unable to obtain device information, ensure camera is in pairing mode.")
 else:
@@ -17,11 +19,6 @@ else:
 
 # Parse returned xml data
 root = ET.fromstring(r.text)
-
-# reference for XML parsing: https://eli.thegreenplace.net/2012/03/15/processing-xml-in-python-with-elementtree
-# another one: https://docs.python.org/3/library/xml.etree.elementtree.html
-#tree = ET.parse('CameraDevDesc.xml')
-#root = tree.getroot()
 
 # Retrieve relevant fields
 uuid = root.find('{urn:schemas-upnp-org:device-1-0}device/{urn:schemas-upnp-org:device-1-0}UDN').text
