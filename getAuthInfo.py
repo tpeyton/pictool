@@ -28,6 +28,7 @@ uuid = root.find('{urn:schemas-upnp-org:device-1-0}device/{urn:schemas-upnp-org:
 nickName = root.find('{urn:schemas-upnp-org:device-1-0}device/{urn:schemas-upnp-org:device-1-0}serviceList/{urn:schemas-upnp-org:device-1-0}service/{urn:schemas-canon-com:schema-upnp}X_deviceNickname').text
 friendlyName = root.find('{urn:schemas-upnp-org:device-1-0}device/{urn:schemas-upnp-org:device-1-0}friendlyName').text
 
-print("uuid: " + uuid)
-print("Friendly Name" + friendlyName)
-print("Device Nickname" + nickName)
+# note [5:] strips the first 5 chars from uuid which are 'uuid:'
+print("uuid: " + uuid[5:])
+print("Friendly Name: " + friendlyName)
+print("Device Nickname: " + nickName)
