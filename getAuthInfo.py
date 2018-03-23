@@ -6,10 +6,10 @@ import requests
 import xml.etree.ElementTree as ET
 
 # initialize variables
-server = "192.168.1.100"
+server = "10.0.0.100"
 
 # get xml file from server (note for actual use, port is 49152)
-r = requests.get('http://' + server + '/CameraDevDesc.xml')
+r = requests.get('http://' + server + ':49152/MobileDevDesc.xml')
 
 # attempt to get file
 if r.status_code != requests.codes.ok:
@@ -22,10 +22,10 @@ root = ET.fromstring(r.text)
 
 # Retrieve relevant fields
 uuid = root.find('{urn:schemas-upnp-org:device-1-0}device/{urn:schemas-upnp-org:device-1-0}UDN').text
-nickName = root.find('{urn:schemas-upnp-org:device-1-0}device/{urn:schemas-upnp-org:device-1-0}serviceList/{urn:schemas-upnp-org:device-1-0}service/{urn:schemas-canon-com:schema-upnp}X_deviceNickname').text
+#nickName = root.find('{urn:schemas-upnp-org:device-1-0}device/{urn:schemas-upnp-org:device-1-0}serviceList/{urn:schemas-upnp-org:device-1-0}service/{urn:schemas-canon-com:schema-upnp}X_deviceNickname').text
 friendlyName = root.find('{urn:schemas-upnp-org:device-1-0}device/{urn:schemas-upnp-org:device-1-0}friendlyName').text
 
 # note [5:] strips the first 5 chars from uuid which are 'uuid:'
 print("uuid: " + uuid[5:])
 print("Friendly Name: " + friendlyName)
-print("Device Nickname: " + nickName)
+#print("Device Nickname: " + nickName)
