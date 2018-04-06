@@ -35,5 +35,3 @@ def setGUID(guid):
 
     # rename newSettings to settings
     os.rename(tempSettingsPath,settingsPath)
-
-setGUID(formatGUID(rawGUID))
