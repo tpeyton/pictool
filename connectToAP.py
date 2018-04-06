@@ -9,6 +9,7 @@ phoneIP = "10.0.0.100"
 ############ PSUEDOCODE #################################
 # Obtain network access
 # references https://www.aircrack-ng.org/doku.php?id=airodump-ng
+# maybe use pycrack? https://github.com/XayOn/pyrcrack
 run airodump-ng on correct channel and mac n shit
 if station is blank
     print client is not connected, waiting for client to connected
@@ -29,7 +30,7 @@ cap2hccapx.bin /path/to/psk-01.cap /path/to/output.hccapx
 
 # authenticate to the AP
 
-# determine phone and camera IP address
+# determine phone and camera IP address, maybe by using MAC? http://www.coffer.com/mac_find/?string=canon
 
 # get guid from phone, if already connected we need to disconnect or getAuthInfo will fail
 rawGUID = getAuthInfo(phoneIP)
