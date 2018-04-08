@@ -10,9 +10,8 @@ def formatGUID(guid):
 
     return guid
 
-def setGUID(guid):
-    # location of gphoto2 settings file
-    settingsPath = os.path.expanduser("~/Scripts/pictool/settings.conf")
+def setGUID(settingsPath,guid):
+    # initialize temp settings file
     tempSettingsPath = settingsPath + "2"
 
     # open files needed

