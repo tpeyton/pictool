@@ -30,8 +30,8 @@ while(aircrack exits with "no valid handshakes found, or no file or directory")
 # take captured cap and format for hashcat (old)
 aircrack-ng psk-01.cap -J output
 
-# take captured cap and format for hashcat 4
-system(/path/to/cap2hccapx.bin /path/to/psk-01.cap /path/to/output.hccapx)
+# take captured cap and format for hashcat 4 <- use this
+subprocess.run(["/path/to/cap2hccapx.bin", "/path/to/psk-01.cap", "/path/to/output.hccapx"], stdout=subprocess.PIPE)
 
 #TODO: call hashcat remotely
     # output the found key
