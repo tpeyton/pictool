@@ -15,7 +15,7 @@ gphoto2Cmd = "-L"
 gphoto2Settings = os.path.expanduser("~/Scripts/pictool/settings.conf")
 
 ############ PSUEDOCODE #################################
-# Obtain network access
+#TODO: Obtain network access
 # references https://www.aircrack-ng.org/doku.php?id=airodump-ng
 # maybe use pycrack? https://github.com/XayOn/pyrcrack
 run airodump-ng on correct channel and mac n shit
@@ -33,17 +33,17 @@ aircrack-ng psk-01.cap -J output
 # take captured cap and format for hashcat 4
 system(/path/to/cap2hccapx.bin /path/to/psk-01.cap /path/to/output.hccapx)
 
-# call hashcat remotely
+#TODO: call hashcat remotely
     # output the found key
 
-# authenticate to the AP
+#TODO: authenticate to the AP
 
-# determine phone and camera IP address, maybe by using MAC? http://www.coffer.com/mac_find/?string=canon
+#TODO: determine phone and camera IP address, maybe by using MAC? http://www.coffer.com/mac_find/?string=canon
 
 # get guid from phone, if already connected we need to disconnect or getAuthInfo will fail
 rawGUID = getAuthInfo(phoneIP)
 
-# disconnect phone
+#TODO: disconnect phone
 
 # set GUID in gphoto2 from phone
 setGUID(formatGUID(rawGUID))
