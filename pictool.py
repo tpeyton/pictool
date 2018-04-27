@@ -47,7 +47,7 @@ rawGUID = getAuthInfo(phoneIP)
 #TODO: disconnect phone
 
 # set GUID in gphoto2 from phone
-setGUID(formatGUID(rawGUID))
+setGUID(gphoto2Settings,formatGUID(rawGUID))
 
 ### connect to camera ip and run ptp stuff via gphoto2
 
